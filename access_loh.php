@@ -13,7 +13,7 @@ $path = "access_log";
 $file = $path."/"."access_log.txt";
 
 // Conexão com o banco de dados MySQL
-$conn = mysqli_connect("localhost", "log_monitor", "LogMonitor$", "smallweb");
+$conn = mysqli_connect("localhost", "xxxxx", "xxxxx", "xxxxx");
 // Verifica se a conexão foi estabelecida com sucesso
 if (!$conn) {
     die("Conexão com o banco de dados falhou: " . mysqli_connect_error());
