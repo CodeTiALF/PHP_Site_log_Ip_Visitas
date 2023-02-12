@@ -1,11 +1,45 @@
 // Log de visitantes para arquivo TXT
 // Obtém o endereço IP do visitante
 $ip = $_SERVER['REMOTE_ADDR'];
-
+// Obtém a URL visitada
+$url = $_SERVER['REQUEST_URI'];
 // Define o nome do arquivo de log
-// -- AQUI -- Fazer melhoria passar nome de arquivo com variavel
 $path = "access_log";
 $file = $path."/"."access_log.txt";
+
+// Conexão com o banco de dados MySQL
+$conn = mysqli_connect("localhost", "log_monitor", "LogMonitor$", "smallweb");
+// Verifica se a conexão foi estabelecida com sucesso
+if (!$conn) {
+    die("Conexão com o banco de dados falhou: " . mysqli_connect_error());
+}
+// Verifica se a tabela `access_log` existe
+$table_check = "SHOW TABLES LIKE 'access_log'";
+$result = mysqli_query($conn, $table_check);
+if (mysqli_num_rows($result) == 0) {
+    // Cria a tabela `access_log`
+    $table_create = "CREATE TABLE access_log (
+        id INT(11) AUTO_INCREMENT PRIMARY KEY,
+        datetime DATETIME NOT NULL,
+        ip VARCHAR(15) NOT NULL,
+        url VARCHAR(255) NOT NULL
+    )";
+    mysqli_query($conn, $table_create);
+}
+
+// Prepara a consulta SQL para inserir os dados na tabela `access_log`
+$sql = "INSERT INTO access_log (datetime, ip, url)
+VALUES (NOW(), '$ip', '$url')";
+
+// Executa a consulta SQL
+if (mysqli_query($conn, $sql)) {
+    // echo "Dados inseridos com sucesso na tabela `access_log`";
+} else {
+    // echo "Erro ao inserir dados na tabela `access_log`: " . mysqli_error($conn);
+}
+
+// Fecha a conexão com o banco de dados
+mysqli_close($conn);
 
 // Verifica se o arquivo existe
 if (!file_exists($file)) {
