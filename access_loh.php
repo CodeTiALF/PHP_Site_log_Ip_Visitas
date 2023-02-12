@@ -8,9 +8,10 @@ $ip = $_SERVER['REMOTE_ADDR'];
 $url = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF'];
 $agente = $_SERVER['HTTP_USER_AGENT'];
 $cookie = $_SERVER['HTTP_COOKIE'];
-// Define o nome do arquivo de log
+// Define o nome da tabela e automaticamente do arquivo de log
 $path = "access_log";
-$file = $path."/"."access_log.txt";
+$tabela = "access_log_pagina_inicial";
+$file = $path."/".$tabela.".txt";
 
 // Conexão com o banco de dados MySQL
 $conn = mysqli_connect("localhost", "xxxxx", "xxxxx", "xxxxx");
@@ -19,11 +20,11 @@ if (!$conn) {
     die("Conexão com o banco de dados falhou: " . mysqli_connect_error());
 }
 // Verifica se a tabela `access_log` existe
-$table_check = "SHOW TABLES LIKE 'access_log'";
+$table_check = "SHOW TABLES LIKE '".$tabela."'";
 $result = mysqli_query($conn, $table_check);
 if (mysqli_num_rows($result) == 0) {
     // Cria a tabela `access_log`
-    $table_create = "CREATE TABLE access_log (
+    $table_create = "CREATE TABLE {$tabela} (
         id INT(11) AUTO_INCREMENT PRIMARY KEY,
         datetime DATETIME NOT NULL,
         ip VARCHAR(15) NOT NULL,
@@ -33,7 +34,7 @@ if (mysqli_num_rows($result) == 0) {
 }
 
 // Prepara a consulta SQL para inserir os dados na tabela `access_log`
-$sql = "INSERT INTO access_log (datetime, ip, url)
+$sql = "INSERT INTO {$tabela} (datetime, ip, url)
 VALUES (NOW(), '$ip', '$url')";
 
 // Executa a consulta SQL
