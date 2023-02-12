@@ -3,7 +3,9 @@
 $ip = $_SERVER['REMOTE_ADDR'];
 
 // Define o nome do arquivo de log
-$file = "access_log.txt";
+// -- AQUI -- Fazer melhoria passar nome de arquivo com variavel
+$path = "access_log";
+$file = $path."/"."access_log.txt";
 
 // Verifica se o arquivo existe
 if (!file_exists($file)) {
