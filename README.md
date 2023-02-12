@@ -7,7 +7,7 @@ Agradecimentos ao OpenAI por auxiliar na resolução de problemas e no desenvolv
 Objetivo do modulo:
 - Registrar os IPs visitante do Website 
 - Criar e atualizar arquivo txt de log
-- 
+- Criar e atualizar uma tabela no mySQL (Falta Fazer)
 
 Resumo:
 Esse código é usado para manter um registro de visitantes em um arquivo de texto. Ele começa obtendo o endereço IP do visitante a partir da variável $_SERVER['REMOTE_ADDR']. Em seguida, verifica se o arquivo de log existe. Se não existir, ele cria o arquivo e escreve duas linhas de cabeçalho nele. Em seguida, inicializa uma variável de contagem de visitas. O código abre então o arquivo para leitura e verifica se o IP do visitante já está registrado no arquivo. Se estiver, ele incrementa a contagem de visitas. Finalmente, o código escreve a nova linha no arquivo, incluindo a data, o endereço IP e a contagem de visitas.
