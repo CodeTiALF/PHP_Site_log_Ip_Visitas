@@ -1,8 +1,13 @@
-// Log de visitantes para arquivo TXT
+<?php
+// Log de visitantes para arquivo TXT 
+// Colocar no index.php include "access_log/";
+// Conexão com o banco de dados MySQL
 // Obtém o endereço IP do visitante
 $ip = $_SERVER['REMOTE_ADDR'];
 // Obtém a URL visitada
-$url = $_SERVER['REQUEST_URI'];
+$url = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF'];
+$agente = $_SERVER['HTTP_USER_AGENT'];
+$cookie = $_SERVER['HTTP_COOKIE'];
 // Define o nome do arquivo de log
 $path = "access_log";
 $file = $path."/"."access_log.txt";
@@ -40,6 +45,9 @@ if (mysqli_query($conn, $sql)) {
 
 // Fecha a conexão com o banco de dados
 mysqli_close($conn);
+
+
+
 
 // Verifica se o arquivo existe
 if (!file_exists($file)) {
@@ -115,3 +123,5 @@ if ($handle) {
 
 // Exibe a mensagem de saudação
 // echo "Este é sua visita número " . $count . " hoje!";
+
+?>
