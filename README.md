@@ -7,7 +7,7 @@ Agradecimentos ao OpenAI por auxiliar na resolução de problemas e no desenvolv
 Objetivo do modulo:
 - Registrar os IPs visitante do Website 
 - Criar e atualizar arquivo txt de log
-- Criar e atualizar uma tabela no mySQL (Falta Fazer)
+- Criar e atualizar uma tabela no mySQL 
 - Passar mone de arquivo com função para criar logs diferentes (Falta Fazer)
 
 Resumo:
