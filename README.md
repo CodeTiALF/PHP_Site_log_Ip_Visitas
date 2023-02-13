@@ -4,11 +4,13 @@ Modulo de logs de Ip's visitantes no site em linguagem php como
 Creditos:
 Agradecimentos ao OpenAI por auxiliar na resolução de problemas e no desenvolvimento deste projeto. https://chat.openai.com/
 
+
 Objetivo do modulo:
 - Registrar os IPs visitante do Website 
 - Criar e atualizar arquivo txt de log
 - Criar e atualizar uma tabela no mySQL 
-- Passar mone de arquivo com função para criar logs diferentes (Falta Fazer)
+- No index.php coloca o include e define o nome da tabela que sera utilizada tambem como nome de arquivo log 
+
 
 Resumo:
 Esse código é usado para manter um registro de visitantes em um arquivo de texto. Ele começa obtendo o endereço IP do visitante a partir da variável $_SERVER['REMOTE_ADDR']. Em seguida, verifica se o arquivo de log existe. Se não existir, ele cria o arquivo e escreve duas linhas de cabeçalho nele. Em seguida, inicializa uma variável de contagem de visitas. O código abre então o arquivo para leitura e verifica se o IP do visitante já está registrado no arquivo. Se estiver, ele incrementa a contagem de visitas. Finalmente, o código escreve a nova linha no arquivo, incluindo a data, o endereço IP e a contagem de visitas.
@@ -38,6 +40,7 @@ Descrição detalhada do código:
 21. Verificação da abertura do arquivo: Verifica-se se o arquivo foi aberto com sucesso.
 22. Escrita da nova string no arquivo: A nova string é escrita no arquivo com a função fwrite($handle, $fileContent).
 23. Fechamento do arquivo: O arquivo é fechado com a função fclose($handle).
+
 
 Descrição do codigo:
 Este código é um script em PHP que registra as visitas de um site em um arquivo de texto. O endereço IP do visitante é obtido a partir da variável $_SERVER['REMOTE_ADDR']. O nome do arquivo de log é definido como "access_log.txt".
