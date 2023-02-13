@@ -1,10 +1,10 @@
 <?php
 // Log de visitantes para arquivo TXT 
 // Colocar no index.php:
-// $log_path = "[caminho]";
+// $log_path = "[caminho]/"; se for ter p path então precisa da "/"
 // $log_tabela = "[tabela]";
 // O nome da tabela é usado para o nome dor arquivo
-// include $log_path."/access_log.php"; 
+// include $log_path."access_log.php"; 
 
 // Obtém o endereço IP do visitante
 $log_ip = $_SERVER['REMOTE_ADDR'];
@@ -15,10 +15,10 @@ $log_cookie = $_SERVER['HTTP_COOKIE'];
 // Define o nome da tabela e automaticamente do arquivo de log
 if (!isset($log_path)  ) { $log_path = "access_log"; }
 if (!isset($log_tabela)) { $log_tabela = "access_log_pagina_inicial"; }
-$log_file = $log_path."/".$log_tabela.".txt";
+$log_file = $log_path.$log_tabela.".txt";
 
 // Conexão com o banco de dados MySQL
-$log_conn = mysqli_connect("localhost", "xxxxx", "xxxxx", "xxxxx");
+$log_conn = mysqli_connect("localhost", "xxxxx", "xxxxx", "xxxxxx");
 // Verifica se a conexão foi estabelecida com sucesso
 if (!$log_conn) {
     die("Conexão com o banco de dados falhou: " . mysqli_connect_error());
