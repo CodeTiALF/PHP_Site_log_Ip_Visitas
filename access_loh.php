@@ -18,7 +18,7 @@ if (!isset($log_tabela)) { $log_tabela = "access_log_pagina_inicial"; }
 $log_file = $log_path."/".$log_tabela.".txt";
 
 // Conexão com o banco de dados MySQL
-$log_conn = mysqli_connect("localhost", "xxxxx", "xxxxxx", "xxxxx");
+$log_conn = mysqli_connect("localhost", "xxxxx", "xxxxx", "xxxxx");
 // Verifica se a conexão foi estabelecida com sucesso
 if (!$log_conn) {
     die("Conexão com o banco de dados falhou: " . mysqli_connect_error());
